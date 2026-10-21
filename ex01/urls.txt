@@ -1,0 +1,8 @@
+http://scu.test@evil.test/login
+http://evil.test\@scu.test/
+http://SCU.test:80/a/./b/../c
+http://scu.test./
+http://scu.test:0080/
+http://[0:0::1]:8080/x
+http://2130706433/scu.test
+http://scu.test/%2e%2e/admin

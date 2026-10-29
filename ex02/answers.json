@@ -1,0 +1,4 @@
+{
+  "strict_sites": [1, 4],
+  "rtt_reuse": [1, 2]
+}

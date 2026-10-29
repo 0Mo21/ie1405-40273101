@@ -1,0 +1,47 @@
+
+گام ۱: HTTP خام
+✓ درخواست HTTP/1.1 بدون Host → 400
+✓ GET / → 200، صفحهٔ HTML با فرم ورود و انتقال، و Content-Length درست
+✓ GET /hello?name=علی → «سلام علی» با طول درست به بایت
+✓ مسیر ناموجود → 404
+✓ DELETE / → 405 همراه Allow
+✓ POST /echo → همان بدنه، دقیقاً به اندازهٔ Content-Length
+✓ دو درخواست پشت‌سرهم روی یک اتصال → دو پاسخ به همان ترتیب
+
+گام ۲: نشست با کوکی
+✓ GET /me بدون کوکی → 401
+✓ POST /login → Set-Cookie با Path=/ و HttpOnly و SameSite=Lax
+✓ شناسهٔ نشست تصادفی و بلند است
+✓ GET /me با کوکی → 200 و user=ali balance=2000000
+✓ POST /transfer: بدون کوکی 401؛ با کوکی 200 و موجودی کم می‌شود
+✓ POST /logout → همان کوکی دیگر کار نمی‌کند
+
+چالش
+✓ چالش: Content-Length و Transfer-Encoding با هم → 400
+✓ چالش: دو Content-Length متفاوت → 400
+✓ چالش: انتقال با Sec-Fetch-Site: same-site → 403 و موجودی دست‌نخورده
+✓ چالش: cross-site → 403، ولی same-origin → 200
+
+گام ۳: همان آزمون‌ها روی TLS
+✓ TLS: درخواست HTTP/1.1 بدون Host → 400
+✓ TLS: GET / → 200، صفحهٔ HTML با فرم ورود و انتقال، و Content-Length درست
+✓ TLS: GET /hello?name=علی → «سلام علی» با طول درست به بایت
+✓ TLS: مسیر ناموجود → 404
+✓ TLS: DELETE / → 405 همراه Allow
+✓ TLS: POST /echo → همان بدنه، دقیقاً به اندازهٔ Content-Length
+✓ TLS: دو درخواست پشت‌سرهم روی یک اتصال → دو پاسخ به همان ترتیب
+✓ TLS: GET /me بدون کوکی → 401
+✓ TLS: POST /login → Set-Cookie با Path=/ و HttpOnly و SameSite=Lax
+✓ TLS: شناسهٔ نشست تصادفی و بلند است
+✓ TLS: GET /me با کوکی → 200 و user=ali balance=2000000
+✓ TLS: POST /transfer: بدون کوکی 401؛ با کوکی 200 و موجودی کم می‌شود
+✓ TLS: POST /logout → همان کوکی دیگر کار نمی‌کند
+
+نمرهٔ آزمون‌های عمومی:
+  گام ۱: HTTP خام (هفت آزمون): 2.5 از 2.5
+  گام ۲: نشست با کوکی (شش آزمون): 2.5 از 2.5
+  گام ۳: آزمون‌های گام ۱ و ۲ روی TLS: 1 از 1
+  چالش (چهار آزمون): 1 از 1
+  جمع: 7 از ۷ (آزمون‌های پنهان ۱ و answers.json ۲ نمرهٔ دیگرند)
+
+Node v24.19.0 · linux · 2026-10-29T20:14:45.901Z

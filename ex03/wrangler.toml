@@ -1,0 +1,4 @@
+# نام Worker همین بماند؛ نشانی شما cv.ie1405-<شمارهٔ دانشجویی>.workers.dev می‌شود
+name = "cv"
+main = "worker.js"
+compatibility_date = "2026-10-01"

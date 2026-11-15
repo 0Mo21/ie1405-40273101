@@ -1,0 +1,17 @@
+نشانی: https://cv.ie1405-40273101.workers.dev
+
+✓ [متدها] GET / → 200 و text/html، با نام و شمارهٔ خودتان (نه متن فایل آغازین)
+✓ [متدها] HEAD /cv.json → 200 بدون بدنه، با Content-Type برابر application/json
+✓ [متدها] OPTIONS / → فیلد Allow با GET و HEAD
+✓ [متدها] POST /contact → 303 با Location به /thanks
+✓ [متدها] DELETE / → 405 با فیلد Allow
+✓ [متدها] مسیر ناموجود → 404
+✓ [cache] صفحهٔ / با public و max-age و ETag
+✓ [cache] GET / با If-None-Match همان ETag → 304 بدون بدنه
+✓ [cache] مسیر /cv.json: JSON معتبر با name و studentId، و public و max-age
+✓ [cache] فایل css صفحه با نام دارای هش، immutable و عمر یک‌ساله
+✓ [cache] صفحهٔ /thanks با no-store
+✓ [نشانی] نشانی cv.ie1405-<شماره>.workers.dev، و همان شماره در /cv.json و صفحه
+
+جمع: 6 از ۶ (آزمون‌های پنهان ۱ و answers.json ۳ نمرهٔ دیگرند)
+Node v24.19.0 · 2026-11-15T11:25:18.653Z
